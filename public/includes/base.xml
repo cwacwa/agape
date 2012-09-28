@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogue>
+	<produit>
+		<id>1</id>
+		<nom>Pistazie Weiss</nom>
+		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </description>
+		<info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </info>
+		<photos>
+			<photo id="1">images/photos/photo1_01.jpg</photo>
+			<photo id="2">images/photos/photo1_02.jpg</photo>
+		</photos>
+	</produit>
+	<produit>
+		<id>2</id>
+		<nom>Ebenholz Weiss</nom>
+		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </description>
+		<info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </info>
+		<photos>
+			<photo id="1">images/photos/photo2_01.jpg</photo>
+			<photo id="2">images/photos/photo2_02.jpg</photo>
+			<photo id="3">images/photos/photo2_03.jpg</photo>
+			<photo id="4">images/photos/photo2_04.jpg</photo>
+			<photo id="5">images/photos/photo2_05.jpg</photo>
+		</photos>
+	</produit>
+	<produit>
+		<id>3</id>
+		<nom>Produit 3</nom>
+		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </description>
+		<info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </info>
+		<photos>
+			<photo id="1">images/photos/photo3_01.jpg</photo>
+		</photos>
+	</produit>
+	<produit>
+		<id>4</id>
+		<nom>Eiche graphit</nom>
+		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </description>
+		<info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </info>
+		<photos>
+			<photo id="1">images/photos/photo4_01.jpg</photo>
+			<photo id="2">images/photos/photo4_02.jpg</photo>
+			<photo id="3">images/photos/photo4_03.jpg</photo>
+			<photo id="4">images/photos/photo4_04.jpg</photo>
+		</photos>
+	</produit>
+	<produit>
+		<id>5</id>
+		<nom>Lima</nom>
+		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </description>
+		<info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </info>
+		<photos>
+			<photo id="1">images/photos/photo5_01.jpg</photo>
+			<photo id="2">images/photos/photo5_02.jpg</photo>
+		</photos>
+	</produit>
+	<produit>
+		<id>6</id>
+		<nom>Murano</nom>
+		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </description>
+		<info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </info>
+		<photos>
+			<photo id="1">images/photos/photo6_01.jpg</photo>
+			<photo id="2">images/photos/photo6_02.jpg</photo>
+			<photo id="3">images/photos/photo6_03.jpg</photo>
+		</photos>
+	</produit>
+	<produit>
+		<id>7</id>
+		<nom>Produit 7</nom>
+		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </description>
+		<info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </info>
+		<photos>
+			<photo id="1">images/photos/photo7_01.jpg</photo>
+			<photo id="2">images/photos/photo7_02.jpg</photo>
+			<photo id="3">images/photos/photo7_03.jpg</photo>
+		</photos>
+	</produit>
+	<produit>
+		<id>8</id>
+		<nom>Produit 8</nom>
+		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </description>
+		<info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </info>
+		<photos>
+			<photo id="1">images/photos/photo8_01.jpg</photo>
+		</photos>
+	</produit>
+	<produit>
+		<id>9</id>
+		<nom>Produit 9</nom>
+		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </description>
+		<info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </info>
+		<photos>
+			<photo id="1">images/photos/photo9_01.jpg</photo>
+		</photos>
+	</produit>
+	<produit>
+		<id>10</id>
+		<nom>Pistazie Weiss</nom>
+		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </description>
+		<info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </info>
+		<photos>
+			<photo id="1">images/photos/photo1_01.jpg</photo>
+			<photo id="2">images/photos/photo1_02.jpg</photo>
+		</photos>
+	</produit>
+	<produit>
+		<id>11</id>
+		<nom>Ebenholz Weiss</nom>
+		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </description>
+		<info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </info>
+		<photos>
+			<photo id="1">images/photos/photo2_01.jpg</photo>
+			<photo id="2">images/photos/photo2_02.jpg</photo>
+			<photo id="3">images/photos/photo2_03.jpg</photo>
+			<photo id="4">images/photos/photo2_04.jpg</photo>
+			<photo id="5">images/photos/photo2_05.jpg</photo>
+		</photos>
+	</produit>
+	<produit>
+		<id>12</id>
+		<nom>Produit 3</nom>
+		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </description>
+		<info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </info>
+		<photos>
+			<photo id="1">images/photos/photo3_01.jpg</photo>
+		</photos>
+	</produit>
+	<produit>
+		<id>13</id>
+		<nom>Eiche graphit</nom>
+		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </description>
+		<info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </info>
+		<photos>
+			<photo id="1">images/photos/photo4_01.jpg</photo>
+			<photo id="2">images/photos/photo4_02.jpg</photo>
+			<photo id="3">images/photos/photo4_03.jpg</photo>
+			<photo id="4">images/photos/photo4_04.jpg</photo>
+		</photos>
+	</produit>
+	<produit>
+		<id>14</id>
+		<nom>Lima</nom>
+		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </description>
+		<info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </info>
+		<photos>
+			<photo id="1">images/photos/photo5_01.jpg</photo>
+			<photo id="2">images/photos/photo5_02.jpg</photo>
+		</photos>
+	</produit>
+	<produit>
+		<id>15</id>
+		<nom>Murano</nom>
+		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </description>
+		<info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </info>
+		<photos>
+			<photo id="1">images/photos/photo6_01.jpg</photo>
+			<photo id="2">images/photos/photo6_02.jpg</photo>
+			<photo id="3">images/photos/photo6_03.jpg</photo>
+		</photos>
+	</produit>
+	<produit>
+		<id>16</id>
+		<nom>Produit 7</nom>
+		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </description>
+		<info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </info>
+		<photos>
+			<photo id="1">images/photos/photo7_01.jpg</photo>
+			<photo id="2">images/photos/photo7_02.jpg</photo>
+			<photo id="3">images/photos/photo7_03.jpg</photo>
+		</photos>
+	</produit>
+	<produit>
+		<id>17</id>
+		<nom>Produit 8</nom>
+		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </description>
+		<info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </info>
+		<photos>
+			<photo id="1">images/photos/photo8_01.jpg</photo>
+		</photos>
+	</produit>
+	<produit>
+		<id>18</id>
+		<nom>Produit 9</nom>
+		<description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </description>
+		<info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc facilisis, ipsum at suscipit molestie, felis eros blandit neque, id vestibulum lectus libero vitae mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et hendrerit felis. </info>
+		<photos>
+			<photo id="1">images/photos/photo9_01.jpg</photo>
+		</photos>
+	</produit>
+	
+</catalogue>

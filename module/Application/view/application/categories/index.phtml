@@ -1,0 +1,36 @@
+<?php
+
+$title = 'Catégories';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<p><a href="<?php echo $this->url('categories/', array(
+        'action'=>'add'));?>">Ajouter une nouvelle catégorie</a></p>
+
+<?php if (count($categories)) : ?>
+
+<table class="table">
+<tr>
+    <th>Nom</th>
+    <th>Parente</th>
+    <th>&nbsp;</th>
+</tr>
+<?php 
+    foreach($categories as $categorie) : ?>
+<tr>
+    <td><?php 
+        echo ($categorie->parent > 0) ? '&nbsp;&nbsp;' : '';  
+        echo $this->escapeHtml($categorie->name);?>
+    </td>
+    <td><?php echo $this->escapeHtml($categorie->parent);?></td>    <td>
+        <a href="<?php echo $this->url('categories',
+            array('action'=>'edit', 'id' => $categorie->id));?>">Modifier</a>
+        <a href="<?php echo $this->url('categories',
+            array('action'=>'delete', 'id' => $categorie->id));?>">Supprimer</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<?php endif; ?>

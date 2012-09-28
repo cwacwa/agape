@@ -1,0 +1,39 @@
+<?php
+
+$title = 'Editer une catégorie';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+$form = $this->form;
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('name'));
+echo $this->formRow($form->get('parent'));
+echo $this->formRow($form->get('lien'));
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
+?>
+<h2>Produits présents dans la catégorie "<?php echo $form->get('name')->getValue() ?>"</h2>
+<table class="table">
+<tr>
+    <th>Nom</th>
+    <th>Description</th>
+    <th>&nbsp;</th>
+</tr>
+<?php 
+    foreach($produits as $produit) : ?>
+<tr>
+    <td><?php echo $this->escapeHtml($produit->name);?></td>
+    <td><?php echo $this->escapeHtml($produit->description);?></td>    <td>
+        <a href="<?php echo $this->url('produits',
+            array('action'=>'edit', 'id' => $produit->id));?>">Modifier</a>
+        <a href="<?php echo $this->url('produits',
+            array('action'=>'delete', 'id' => $produit->id));?>">Supprimer</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
