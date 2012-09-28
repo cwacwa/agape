@@ -10,8 +10,9 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel,
- \Application\Service\AuthService;
+use Zend\View\Model\ViewModel;
+use Zend\View\Model\JsonModel;
+
 
 class AdminController extends AbstractActionController
 {
@@ -19,14 +20,6 @@ class AdminController extends AbstractActionController
     public function _construct()
     {
                 
-    }
-    
-    private function checkIdentity() {
-       //$authService = new AuthService();
-       var_dump (AuthService::hasIdentity());exit;
-       /*if (!$authService->authenticate()) {
-           return $this->redirect()->toRoute('auth');
-       }*/
     }
     
     public function indexAction()
@@ -37,4 +30,130 @@ class AdminController extends AbstractActionController
         return new ViewModel();
     }
 
+    
+    /**
+     * Vraiment très mal fait pour le moment, très moche,je le sais.
+     * @return \Zend\View\Model\JsonModel
+     */
+    public function updatexmlAction()
+    {
+        // création du fichier XML
+        $xml = new \DOMDocument('1.0', 'utf-8');
+        
+        $catalogue = $xml->createElement('catalogue');
+        
+        $categoriesLevel1 = $this->getCategorieTable()->fetchAllRootLevel();
+        
+        // pour chaque catégorie de niveau 1, on ajoute une node au xml
+        foreach ($categoriesLevel1 as $categorieLevel1) {
+
+            $id = $xml->createElement('id', $categorieLevel1->id);
+            $name = $xml->createElement('name', $categorieLevel1->name);
+            $lien = $xml->createElement('lien', $categorieLevel1->lien);
+            $parent = $xml->createElement('parent', $categorieLevel1->parent);
+
+            $elementCategorieLevel1 = $xml->createElement('categorie-0');
+            $elementCategorieLevel1->appendChild($id);
+            $elementCategorieLevel1->appendChild($name);
+            $elementCategorieLevel1->appendChild($lien);
+            $elementCategorieLevel1->appendChild($parent);
+            
+            // pour chaque sous-catégorie on ajoute une node
+            $categoriesLevel2 = $this->getCategorieTable()->fetchAllByParentId($categorieLevel1->id);
+            if ($categoriesLevel2) {
+                foreach ($categoriesLevel2 as $categorieLevel2) {
+                    $id = $xml->createElement('id', $categorieLevel2->id);
+                    $name = $xml->createElement('name', $categorieLevel2->name);
+                    $lien = $xml->createElement('lien', $categorieLevel2->lien);
+                    $parent = $xml->createElement('parent', $categorieLevel2->parent);
+                    
+                    $elementCategorieLevel2 = $xml->createElement('categorie-1');
+                    $elementCategorieLevel2->appendChild($id);
+                    $elementCategorieLevel2->appendChild($name);
+                    $elementCategorieLevel2->appendChild($lien);
+                    $elementCategorieLevel2->appendChild($parent);
+                    
+                    // ajout des produits
+                    $produits = $this->getProduitTable()->fetchAll($categorieLevel2->id);
+                    if ($produits) {
+                        foreach ($produits as $produit) {
+                             $id = $xml->createElement('id', $produit->id);        
+                             $name = $xml->createElement('name', $produit->name);        
+                             $description = $xml->createElement('description', $produit->description);        
+                             $info = $xml->createElement('info', $produit->info);        
+                             
+                             $elementProduit = $xml->createElement('produit');
+                             $elementProduit->appendChild($id);
+                             $elementProduit->appendChild($name);
+                             $elementProduit->appendChild($description);
+                             $elementProduit->appendChild($info);
+                             
+                             $elementCategorieLevel2->appendChild($elementProduit);
+                        }
+                        
+                    }
+                    $elementCategorieLevel1->appendChild($elementCategorieLevel2);
+                }
+            } else {
+                // ajout des produits
+                $produits = $this->getProduitTable()->fetchAll($categorieLevel1->id);
+                if ($produits) {
+                    foreach ($produits as $produit) {
+                         $id = $xml->createElement('id', $produit->id);        
+                         $name = $xml->createElement('name', $produit->name);        
+                         $description = $xml->createElement('description', $produit->description);        
+                         $info = $xml->createElement('info', $produit->info);        
+
+                         $elementProduit = $xml->createElement('produit');
+                         $elementProduit->appendChild($id);
+                         $elementProduit->appendChild($name);
+                         $elementProduit->appendChild($description);
+                         $elementProduit->appendChild($info);
+                    }
+                    $elementCategorieLevel1->appendChild($elementProduit);
+                }
+            }
+            
+            $catalogue->appendChild($elementCategorieLevel1);
+            
+            
+            
+        }
+        
+        
+        
+        
+        $xml->appendChild($catalogue);
+        
+        // suppression du fichier précédent
+        unlink(PUBLIC_PATH . '/includes/base.xml');
+        // sauvegarde du nouveau fichier
+        $success = (bool)$xml->save(PUBLIC_PATH . '/includes/base.xml');
+        
+        $result = new JsonModel(
+                array(
+                    'success' => $success
+                )
+         );
+        
+        return $result;
+    }
+    
+    
+        public function getCategorieTable() {
+        if (!$this->categorieTable) {
+            $sm = $this->getServiceLocator();
+            $this->categorieTable = $sm->get('Application\Model\CategorieTable');
+        }
+        return $this->categorieTable;
+    }
+    
+     public function getProduitTable() {
+        if (!$this->produitTable) {
+            $sm = $this->getServiceLocator();
+            $this->produitTable = $sm->get('Application\Model\ProduitTable');
+        }
+        return $this->produitTable;
+    }
+    
 }

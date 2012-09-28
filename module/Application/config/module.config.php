@@ -22,9 +22,13 @@ return array(
                 ),
             ),
             'admin' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/admin',
+                    'route'    => '/admin[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ),
                     'defaults' => array(
                         'controller' => 'Application\Controller\Admin',
                         'action'     => 'index',

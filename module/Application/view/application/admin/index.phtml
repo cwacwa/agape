@@ -1,1 +1,31 @@
-admin
+<h1>Bienvenue sur la partie d'administration du site Agapè</h1>
+
+<div class="clearfix"></div>
+<div class="clearfix"></div>
+
+<p>N'oubliez pas de cliquer sur "mettre le site à jour" ci-dessous une fois que vos modifications ont été apportées.</p>
+<p>La mise à jour du site permet de synchroniser le fichier XML avec la base de données.</p>
+
+<button onclick="updateXmlFile()">Mettre le site à jour !</button>
+
+<div id="reponse-update"></div>
+
+
+<script>
+function updateXmlFile() {    
+    $.ajax({
+            url: '<?php echo $this->url('admin/', array('action' => 'updatexml')) ?>',
+            type:'post',
+            dataType : 'json',
+            success: function(response) 
+            {
+                if (response.success == true) {
+                    $('#reponse-update').text('La mise à jour a été effectuée avec succès !');
+                } else {
+                    $('#reponse-update').text('La mise à jour n\'a pas pu être effectuée');
+                }
+                
+            }
+        });
+}
+</script>

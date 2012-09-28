@@ -55,6 +55,15 @@ class CategorieTable extends AbstractTableGateway
         
     }
     
+    public function fetchAllByParentId($id)
+    {        
+        $select = new \Zend\Db\Sql\Select();
+        $select->columns(array('*'))->from('categorie')->where('parent=' . (int)$id );
+        
+        return $this->selectWith($select);
+        
+    }
+    
     public function getCategorie($id)
     {
         $id  = (int) $id;

@@ -73,7 +73,6 @@ foreach ($this->categories as $categorie) :
 $script.=<<<SCRIPT
         $("#link-$categorie[id]").click(function(){
            $("#submenu-$categorie[id]").slideToggle();
-           //$("#submenu-$categorie[id]").addClass('open');
         });
 SCRIPT;
     endif; 
