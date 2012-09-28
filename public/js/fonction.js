@@ -19,8 +19,6 @@ aImages[1] = "images/fonddiscover.jpg";
 /* /Lexique */
 function init(){
     
-    alert('test git');
-    
     "use strict";
     height = ($('body').height())/3;
     width = height*ratio;
