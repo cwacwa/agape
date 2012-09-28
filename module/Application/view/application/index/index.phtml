@@ -10,7 +10,7 @@
             <li class="lienmenu" id="link-<?php echo $categorie['id'] ?>" name="<?php echo $i ?>"><?php echo $categorie['name'] ?></li>
                 
             <?php if (count($categorie['children'])) : ?>
-                <ul id="<?php echo $categorie['id'] ?>" class="menusub">
+                <ul id="submenu-<?php echo $categorie['id'] ?>" class="menusub">
                     <?php foreach($categorie['children'] as $child) : ?>
                         <li class="lienmenusub" id="<?php echo $child['id'] ?>"><?php echo $child['name'] ?></li>
                     <?php endforeach; ?>
@@ -72,9 +72,9 @@ foreach ($this->categories as $categorie) :
     if (count($categorie['children'])) : 
 $script.=<<<SCRIPT
         $("#link-$categorie[id]").click(function(){
-        "use strict";
-        $("#$categorie[id]").slideToggle();
-    });
+           $("#submenu-$categorie[id]").slideToggle();
+           //$("#submenu-$categorie[id]").addClass('open');
+        });
 SCRIPT;
     endif; 
 endforeach;

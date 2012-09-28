@@ -140,11 +140,11 @@ $(".lienmenu").click(function(){
     
     $(".lienmenu ul").slideToggle();
     if($('ul').hasClass('open') && $(this).next().hasClass('open') == false){
-        $('.open').hide('slide');
+        $('.open').hide('slide');    
     }
     
     $('.open').removeClass('open');
-    if($(this).next().css('display') != 'block'){
+    if($(this).next().css('display') == 'block'){
         $(this).next().addClass('open');
     }
     
@@ -207,22 +207,6 @@ $(".lienmenusub").click(function(){
             'color' : '#333333'
         });
     }
-});
-
-
-$("#link-cuisines").click(function(){
-    "use strict";
-    $("#cuisines").slideToggle();
-});
-
-$("#link-plan").click(function(){
-    "use strict";
-    $("#plans").slideToggle();
-});
-
-$("#link-service").click(function(){
-    "use strict";
-    $("#services").slideToggle();
 });
 
 $("#link-mention").click(function(){
