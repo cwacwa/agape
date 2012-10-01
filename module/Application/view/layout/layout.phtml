@@ -44,8 +44,58 @@
     </div>
     <!-- /Panel -->
 
+    
+    <div class="panel" id="panel-contact">
+			<div class="content">
+				<div id="columnOpaFloat">
+					<div style="padding-top:135px;" id="textwrapOpaFloat">
+						<span class="size15 space2 upper">contactez-nous !</span><br><br>
+
+						<span class="upper bold">notre magasin</span><br>
+						<span class="ita">(à côté de Roche Bobois)</span><br>
+						Votre magasin <span class="upper bold">AGAPè</span> vous accueille :<br>
+						<span class="tab">47 Avenue Georges Dumas</span><br>
+						<span class="tab">87000 Limoges</span><br><br>
+						
+						Horaires d'ouverture du magasin :<br>
+						<span class="tab">Le lundi de 14h à 19h</span><br>
+						<span class="tab">Du mardi au vendredi de 10h à 12h et</span><br>
+						<span class="tab">de 14h à 19h</span><br>
+						<span class="tab">Le samedi de 10h à 12h et de 14h à 17h</span><br><br><br>
+
+
+						<span class="upper bold">nos coordonnées</span><br>
+						Tél. : 05 55 55 94 23<br>
+						Adresse e-mail : stylad@orange.fr<br><br><br>
+
+					</div>
+					<div id="map">
+						<iframe width="250" scrolling="no" height="200" frameborder="0" src="http://maps.google.fr/maps?f=q&amp;source=s_q&amp;hl=fr&amp;geocode=&amp;q=47+Avenue+Georges+Dumas,+Limoges&amp;aq=1&amp;oq=47+avenue+georges+d&amp;sll=46.22475,2.0517&amp;sspn=24.417519,67.631836&amp;ie=UTF8&amp;hq=&amp;hnear=47+Avenue+Georges+Dumas,+87000+Limoges,+Haute-Vienne,+Limousin&amp;ll=45.82669,1.264118&amp;spn=0.012007,0.033023&amp;t=m&amp;z=14&amp;output=embed" marginwidth="0" marginheight="0"></iframe><br><small><a target="_blank" style="color:#0000FF;text-align:left" href="http://maps.google.fr/maps?f=q&amp;source=embed&amp;hl=fr&amp;geocode=&amp;q=47+Avenue+Georges+Dumas,+Limoges&amp;aq=1&amp;oq=47+avenue+georges+d&amp;sll=46.22475,2.0517&amp;sspn=24.417519,67.631836&amp;ie=UTF8&amp;hq=&amp;hnear=47+Avenue+Georges+Dumas,+87000+Limoges,+Haute-Vienne,+Limousin&amp;ll=45.82669,1.264118&amp;spn=0.012007,0.033023&amp;t=m&amp;z=14">Agrandir le plan</a></small>
+					</div>
+				</div>
+				<div id="columnFloat">
+					<div style="padding-top:135px;" id="textwrapFloat">
+						<span class="size15 space2 upper">FORMULAIRE DE CONTACT</span><br><br>
+
+						<form action="includes/traitement.php" method="post" id="contact">
+							<span class="upper bold">votre nom</span><br>
+							<input type="text" id="nom" name="nom"><br><br>
+
+							<span class="upper bold">votre adresse email</span><br>
+							<input type="email" id="mail" name="mail"><br><br>
+
+							<span class="upper bold">votre message</span><br>
+							<textarea id="message" name="message"></textarea><br><br>
+							
+							<input type="button" value="envoyer votre message" name="valider" class="space2 upper size15" onclick="envoyerMail();" id="btnsubmit">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+    
     <!-- Mentions légales -->
-    <div id="panel6" class="panel">
+    <div id="panel-mentions" class="panel">
         <div class="content">
             <div id="columnOpaFloat">
                 <div id="textwrapOpaFloat">

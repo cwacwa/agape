@@ -138,42 +138,47 @@ $(document).ready(function(){
 $(".lienmenu").click(function(){
     "use strict";
     
-    $(".lienmenu ul").slideToggle();
-    if($('ul').hasClass('open') && $(this).next().hasClass('open') == false){
-        $('.open').hide('slide');    
-    }
-    
-    $('.open').removeClass('open');
-    if($(this).next().css('display') == 'block'){
-        $(this).next().addClass('open');
-    }
-    
-    if($(this).next().hasClass('menusub') == false){
-        var numonglet = parseInt($(this).attr('name'),10);
-        var margin = numonglet * 50;
-        $('#fancy').animate({
-            'marginTop' : margin
-        }, 'fast' , 'easeOutExpo');
+    if ($(this).attr('id') != 'link-contact') {
+        
 
-        if($("#panel").css('marginLeft') === "20px"){
-            $('#home').css({
-                'display' : 'block'
-            });
-            $(".panel").animate({
-                "marginLeft": "-102%"
-            }, "slow");
+
+        $(".lienmenu ul").slideToggle();
+        if($('ul').hasClass('open') && $(this).next().hasClass('open') == false){
+            $('.open').hide('slide');    
         }
-        $("#panel").animate({
-            "marginLeft": "20px"
-        }, "slow",
-        function(){
-            $('#home').css({
-                'display' : 'none'
+
+        $('.open').removeClass('open');
+        if($(this).next().css('display') == 'block'){
+            $(this).next().addClass('open');
+        }
+
+        if($(this).next().hasClass('menusub') == false){
+            var numonglet = parseInt($(this).attr('name'),10);
+            var margin = numonglet * 50;
+            $('#fancy').animate({
+                'marginTop' : margin
+            }, 'fast' , 'easeOutExpo');
+
+            if($("#panel").css('marginLeft') === "20px"){
+                $('#home').css({
+                    'display' : 'block'
+                });
+                $(".panel").animate({
+                    "marginLeft": "-102%"
+                }, "slow");
+            }
+            $("#panel").animate({
+                "marginLeft": "20px"
+            }, "slow",
+            function(){
+                $('#home').css({
+                    'display' : 'none'
+                });
             });
-        });
-        $("#link-mention").css({
-            'color' : '#333333'
-        });
+            $("#link-mention").css({
+                'color' : '#333333'
+            });
+        }
     }
 });
 
@@ -211,7 +216,7 @@ $(".lienmenusub").click(function(){
 
 $("#link-mention").click(function(){
     "use strict";
-    if($("#panel6").css('marginLeft') !== "20px"){
+    if($("#panel-mentions").css('marginLeft') !== "20px"){
         $('#home').css({
             'display' : 'block'
         });
@@ -226,7 +231,37 @@ $("#link-mention").click(function(){
             'color' : '#fff'
         });
     }
-    $("#panel6").animate({
+    $("#panel-mentions").animate({
+        "marginLeft": "20px"
+    }, "slow",
+    function(){
+        $('#home').css({
+            'display' : 'none'
+        });
+    });
+    if($('li').hasClass('selected')){
+        $('.selected').removeClass('selected');
+    }
+});
+
+$("#link-contact").click(function(){
+    "use strict";
+    if($("#panel-contact").css('marginLeft') !== "20px"){
+        $('#home').css({
+            'display' : 'block'
+        });
+        $(".panel").animate({
+            "marginLeft": "-102%"
+        }, "slow");
+        $(".lienmenu").css({
+            'background-color' : '', 
+            'color' : '#faf0e6'
+        });
+        $("#link-mention").css({
+            'color' : '#333'
+        });
+    }
+    $("#panel-contact").animate({
         "marginLeft": "20px"
     }, "slow",
     function(){

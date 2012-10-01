@@ -20,38 +20,10 @@
         <?php
             $i++;
         endforeach; ?>
+             <li class="lienmenu" id="link-contact" name="6">contact</li>
+        </ul>
         
-        </ul>
-       <?php /* 
-            <li class="lienmenu" id="link-cuisines" name="0">cuisines</li>
-            <ul id="cuisines" class="menusub">
-                <li class="lienmenusub" id="cuisine-design">design</li>
-                <li class="lienmenusub" id="cuisine-esprit">esprit</li>
-                <li class="lienmenusub" id="cuisine-authentic">authentic</li>
-                <li class="lienmenusub" id="cuisine-electromenager">électroménager</li>
-            </ul>
-            <li class="lienmenu" id="link-sdb" name="1">salle de bain</li>
-            <li class="lienmenu" id="link-dressing" name="2">dressing / rangement</li>
-            <li class="lienmenu" id="link-plan" name="3">plan de travail</li>
-            <ul id="plans" class="menusub">
-                <li class="lienmenusub" id="plan-stratifiés">stratifiés</li>
-                <li class="lienmenusub" id="plan-resines">résines</li>
-                <li class="lienmenusub" id="plan-ceramiques">céramiques</li>
-                <li class="lienmenusub" id="plan-verres">verres</li>
-                <li class="lienmenusub" id="plan-pierrenat">pierres naturelles</li>
-                <li class="lienmenusub" id="plan-bois">bois</li>
-                <li class="lienmenusub" id="plan-inox">inox</li>
-            </ul>
-            <li class="lienmenu" id="link-service" name="4">services</li>
-            <ul id="services" class="menusub">
-                <li class="lienmenusub" id="service-bureau">bureau d'étude</li>
-                <li class="lienmenusub" id="service-enlevement">enlevement</li>
-                <li class="lienmenusub" id="service-travaux">travaux</li>
-                <li class="lienmenusub" id="service-livraison">livraison / pose</li>
-            </ul>
-            <li class="lienmenu" id="link-discover" name="5">découvrez agapè</li>
-            <li class="lienmenu" id="link-contact" name="6">contact</li>
-        </ul>
+        
         <div id="social">
             <div id="logowrap">
                 <a href="#" id="fb"></a>
@@ -63,9 +35,7 @@
                 <p><input type="button" id="link-mention" value="mentions légales" /></p>
             </div>
         </div>
-
-    </div>
-*/
+<?php
 // Génération des écouteurs sur les catégories ayant des enfants
 $script = '';
 foreach ($this->categories as $categorie) : 

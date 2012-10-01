@@ -42,7 +42,7 @@ class ProduitForm extends Form
             'name' => 'description',
             'required'   => false,
             'attributes' => array(
-                'class' => 'long-text redactor',
+                'class' => 'long-text',
                 'type' => 'textarea',
             ),
             'options' => array(
@@ -53,7 +53,7 @@ class ProduitForm extends Form
             'name' => 'info',
             'required'   => false,
             'attributes' => array(
-                'class' => 'long-text redactor',
+                'class' => 'long-text',
                 'type' => 'textarea',
             ),
             'options' => array(

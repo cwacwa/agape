@@ -165,7 +165,7 @@ textarea{
   height: 100%;
   letter-spacing: 1px;
   position: absolute;
-  right: 40px;
+  left:280px;
   top: 0;
 }
 .content h2{

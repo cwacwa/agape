@@ -17,6 +17,10 @@ use Zend\View\Model\JsonModel;
 class AdminController extends AbstractActionController
 {
     
+    protected $produitTable;
+    protected $categorieTable;
+    protected $photoTable;
+    
     public function _construct()
     {
                 
@@ -60,7 +64,7 @@ class AdminController extends AbstractActionController
             
             // pour chaque sous-catégorie on ajoute une node
             $categoriesLevel2 = $this->getCategorieTable()->fetchAllByParentId($categorieLevel1->id);
-            if ($categoriesLevel2) {
+            if (count($categoriesLevel2)) {
                 foreach ($categoriesLevel2 as $categorieLevel2) {
                     $id = $xml->createElement('id', $categorieLevel2->id);
                     $name = $xml->createElement('name', $categorieLevel2->name);
@@ -75,12 +79,12 @@ class AdminController extends AbstractActionController
                     
                     // ajout des produits
                     $produits = $this->getProduitTable()->fetchAll($categorieLevel2->id);
-                    if ($produits) {
+                    if (count($produits)) {
                         foreach ($produits as $produit) {
                              $id = $xml->createElement('id', $produit->id);        
                              $name = $xml->createElement('name', $produit->name);        
                              $description = $xml->createElement('description', $produit->description);        
-                             $info = $xml->createElement('info', $produit->info);        
+                             $info = $xml->createElement('info',$produit->info);        
                              
                              $elementProduit = $xml->createElement('produit');
                              $elementProduit->appendChild($id);
@@ -88,16 +92,30 @@ class AdminController extends AbstractActionController
                              $elementProduit->appendChild($description);
                              $elementProduit->appendChild($info);
                              
-                             $elementCategorieLevel2->appendChild($elementProduit);
+                             // on récupère les images de chaque produit
+                            $photos = $this->getPhotoTable()->fetchAll($produit->id);
+                            $elementPhotos = $xml->createElement('photos');
+                            
+                            if (count($photos)) {
+                                foreach ($photos as $photo) {
+                                    $elementPhoto = $xml->createElement('photo', $photo->url );     
+                                    $elementPhoto->setAttribute('id', $photo->id);
+                                    $elementPhotos->appendChild($elementPhoto);
+                                }
+                            }
+                            $elementProduit->appendChild($elementPhotos);
+                            $elementCategorieLevel2->appendChild($elementProduit);
                         }
                         
                     }
                     $elementCategorieLevel1->appendChild($elementCategorieLevel2);
                 }
-            } else {
+            } else { 
+                // cas où la catégorie n'a pas de sous-catégorie, 
                 // ajout des produits
                 $produits = $this->getProduitTable()->fetchAll($categorieLevel1->id);
-                if ($produits) {
+                
+                if (count($produits)) {
                     foreach ($produits as $produit) {
                          $id = $xml->createElement('id', $produit->id);        
                          $name = $xml->createElement('name', $produit->name);        
@@ -109,8 +127,22 @@ class AdminController extends AbstractActionController
                          $elementProduit->appendChild($name);
                          $elementProduit->appendChild($description);
                          $elementProduit->appendChild($info);
+                         
+                        // on récupère les images de chaque produit
+                        $photos = $this->getPhotoTable()->fetchAll($produit->id);
+                        $elementPhotos = $xml->createElement('photos');
+
+                        if (count($photos)) {
+                            foreach ($photos as $photo) {
+                                   $elementPhoto = $xml->createElement('photo', $photo->url );     
+                                   $elementPhoto->setAttribute('id', $photo->id);
+                                   $elementPhotos->appendChild($elementPhoto);
+                               }
+                        }
+                        $elementProduit->appendChild($elementPhotos);
+                        $elementCategorieLevel1->appendChild($elementProduit);
                     }
-                    $elementCategorieLevel1->appendChild($elementProduit);
+                    
                 }
             }
             
@@ -154,6 +186,14 @@ class AdminController extends AbstractActionController
             $this->produitTable = $sm->get('Application\Model\ProduitTable');
         }
         return $this->produitTable;
+    }
+    
+    public function getPhotoTable() {
+        if (!$this->photoTable) {
+            $sm = $this->getServiceLocator();
+            $this->photoTable = $sm->get('Application\Model\PhotoTable');
+        }
+        return $this->photoTable;
     }
     
 }
