@@ -185,6 +185,13 @@ $(".lienmenu").click(function(){
 $(".lienmenusub").click(function(){
     "use strict";
     
+    var idlien = $(this).attr('id');
+    if ($(this).hasClass('lienmenu')) {
+        var level = 0;
+    } else {
+        var level = 1;
+    }
+    
     if($(this).next().hasClass('menusub') == false){
         var numonglet = parseInt($(this).attr('name'),10);
         var margin = numonglet * 50;
@@ -196,9 +203,13 @@ $(".lienmenusub").click(function(){
             $('#home').css({
                 'display' : 'block'
             });
-            $(".panel").animate({
+            $("#panel").animate({
                 "marginLeft": "-102%"
-            }, "slow");
+            }, "slow", function(){
+                    // récupération du contenu en fonction de idlien (id de la catégorie visée)
+                    setXmlContent(idlien, level);
+                }
+            );
         }
         $("#panel").animate({
             "marginLeft": "20px"
@@ -407,6 +418,63 @@ $('#slide img').click(function(){
         }
     });
 });
+
+function setXmlContent(idcategorie, level)
+{
+    $.ajax({
+        url: "includes/base.xml",
+        type: "GET",
+        dataType: "xml",
+        success: function(xml){
+           $('#slide').html(''); 
+           $(xml).find('categorie-' + level).each(function(){
+                // on récupère les produits et les photos de la catégorie
+                if ($(this).attr('id') == idcategorie) {
+                    // on récupère la premiere photo de chaque produit contenu dans cette catégorie
+                    $(this).find('produit').each(function(){
+                        var idProduit = $(this).find('id').text();
+                        $(this).find('photo').each(function(){
+                            $('<div class="borderBox">' +
+                                '<img name="' + idProduit + '" src="'+$(this).text()+'">'+
+                           '</div>').appendTo($('#slide'));
+                           return false;
+                        });
+                    });
+                    $('<div class="clr"></div>').appendTo($('#slide'));
+                    
+                    $(this).find('photos').find('photo').each(function(){
+                        
+                    });
+                }
+                
+                init();
+
+            });
+        }
+    });
+}
+
+/*// on renseigne les champs
+                    var nom = $(this).find('nom').text();
+                    var description = $(this).find('description').text();
+                    var info = $(this).find('info').text();
+                    nombre_photos = $(this).find('photos').find('photo').length;
+                    if(nombre_photos === 1){
+                        $('#next').css({
+                            'visibility' : 'hidden'
+                        });
+                    }
+                    
+                    var link = $(this).find('photos').find('photo[id="'+ num_photo +'"]').text();
+                    
+                    $('#nom_produit').html(nom);
+                    $('#desc_produit').html(description);
+                    $('#info_produit').html(info);
+                    $('#image_detail').css({
+                        'background-image' : 'url("'+link+'")'
+                    });*/
+
+
 
 function parseXml(xml){
     "use strict";

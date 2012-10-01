@@ -34,7 +34,7 @@ class ProduitHelper
         if (!isset($erreur)) { //S'il n'y a pas d'erreur, on upload
             if (move_uploaded_file($_FILES['url']['tmp_name'], $dossier . $fichier)) { //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
                 // sauvegarde du fichier
-                return '/images/photos/' . $produitId . '/' . $fichier;
+                return 'images/photos/' . $produitId . '/' . $fichier;
             } else { //Sinon (la fonction renvoie FALSE).
                 $msg = 'Echec de l\'upload !';
             }

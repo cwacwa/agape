@@ -51,28 +51,28 @@ class AdminController extends AbstractActionController
         // pour chaque catégorie de niveau 1, on ajoute une node au xml
         foreach ($categoriesLevel1 as $categorieLevel1) {
 
-            $id = $xml->createElement('id', $categorieLevel1->id);
             $name = $xml->createElement('name', $categorieLevel1->name);
             $lien = $xml->createElement('lien', $categorieLevel1->lien);
             $parent = $xml->createElement('parent', $categorieLevel1->parent);
 
             $elementCategorieLevel1 = $xml->createElement('categorie-0');
-            $elementCategorieLevel1->appendChild($id);
+            $elementCategorieLevel1->setAttribute('id', $categorieLevel1->id);
             $elementCategorieLevel1->appendChild($name);
             $elementCategorieLevel1->appendChild($lien);
             $elementCategorieLevel1->appendChild($parent);
+            
+            
             
             // pour chaque sous-catégorie on ajoute une node
             $categoriesLevel2 = $this->getCategorieTable()->fetchAllByParentId($categorieLevel1->id);
             if (count($categoriesLevel2)) {
                 foreach ($categoriesLevel2 as $categorieLevel2) {
-                    $id = $xml->createElement('id', $categorieLevel2->id);
                     $name = $xml->createElement('name', $categorieLevel2->name);
                     $lien = $xml->createElement('lien', $categorieLevel2->lien);
                     $parent = $xml->createElement('parent', $categorieLevel2->parent);
                     
                     $elementCategorieLevel2 = $xml->createElement('categorie-1');
-                    $elementCategorieLevel2->appendChild($id);
+                    $elementCategorieLevel2->setAttribute('id', $categorieLevel2->id);
                     $elementCategorieLevel2->appendChild($name);
                     $elementCategorieLevel2->appendChild($lien);
                     $elementCategorieLevel2->appendChild($parent);
