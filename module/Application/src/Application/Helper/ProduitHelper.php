@@ -74,8 +74,8 @@ class ProduitHelper
     
     public static function deleteImage($url)
     {
-        if (is_file(PUBLIC_PATH . $url)) {
-            return unlink (PUBLIC_PATH . $url);
+        if (is_file(PUBLIC_PATH . '/' . $url)) {
+            return unlink (PUBLIC_PATH . '/' . $url);
         } else {
             return false;
         }

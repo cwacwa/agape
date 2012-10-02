@@ -166,6 +166,7 @@ textarea{
   letter-spacing: 1px;
   position: absolute;
   left:280px;
+  right:40px;
   top: 0;
 }
 .content h2{

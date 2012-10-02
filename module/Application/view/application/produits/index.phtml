@@ -12,6 +12,7 @@ $this->headTitle($title);
 
 <table class="table">
 <tr>
+    <th>ID</th>
     <th>Nom</th>
     <th>Description</th>
     <th>&nbsp;</th>
@@ -19,6 +20,7 @@ $this->headTitle($title);
 <?php 
     foreach($produits as $produit) : ?>
 <tr>
+    <td><?php echo $produit->id; ?></td>
     <td><?php echo $this->escapeHtml($produit->name);?></td>
     <td><?php echo $produit->description; ?></td>    <td>
         <a href="<?php echo $this->url('produits',

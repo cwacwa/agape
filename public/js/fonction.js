@@ -41,7 +41,7 @@ function init(){
         });
     tailleEcran = window.innerWidth;
     tailleSlide = $('#slide').width();
-     
+    
 }
 			
 			
@@ -183,7 +183,6 @@ $(".lienmenu").click(function(){
 });
 
 $(".lienmenusub").click(function(){
-    "use strict";
     
     var idlien = $(this).attr('id');
     if ($(this).hasClass('lienmenu')) {
@@ -210,6 +209,9 @@ $(".lienmenusub").click(function(){
                     setXmlContent(idlien, level);
                 }
             );
+        } else {
+            // récupération du contenu en fonction de idlien (id de la catégorie visée)
+            setXmlContent(idlien, level);
         }
         $("#panel").animate({
             "marginLeft": "20px"
@@ -433,18 +435,47 @@ function setXmlContent(idcategorie, level)
                     // on récupère la premiere photo de chaque produit contenu dans cette catégorie
                     $(this).find('produit').each(function(){
                         var idProduit = $(this).find('id').text();
+                        var nom = $(this).find('name').text();
+                        var description = $(this).find('description').text();
+                        var info = $(this).find('info').text();
+                        var link = $(this).find('photos').find('photo').first().next().text();
+                        var idImage = $(this).find('photos').find('photo').first().next().attr('id');
+                        var next = $(this).find('photos').find('photo').first().next().next().is('photo');
+                        
                         $(this).find('photo').each(function(){
                             $('<div class="borderBox">' +
-                                '<img name="' + idProduit + '" src="'+$(this).text()+'">'+
-                           '</div>').appendTo($('#slide'));
+                                '<img id="mini-image-' + idProduit + '" src="'+$(this).text()+'">'+
+                            '</div>').appendTo($('#slide'));
+                                                      
                            return false;
                         });
+                        
+                         // ajout d'un écouteur sur chaque image de produit
+                         $('#mini-image-' + idProduit).click(function(){
+                            
+                            $('#nom_produit').html(nom);
+                            $('#desc_produit').html(description);
+                            $('#info_produit').html(info);
+                            $('#image_detail').css({
+                                'background-image' : 'url("'+link+'")'
+                            });
+                            $('#current_prod_id').val(idProduit);
+                            $('#current_img_id').val(idImage);
+                            
+                            // test s'il y a d'autres photos 
+                            if (next) {
+                                $('#next').css({'visibility' : 'visible'});
+                            } else {
+                                $('#next').css({'visibility' : 'hidden'});
+                            }
+                             $('#prev').css({
+                                'visibility' : 'hidden'
+                            });
+                            $('#detailNext').fadeIn();
+                       });
                     });
                     $('<div class="clr"></div>').appendTo($('#slide'));
                     
-                    $(this).find('photos').find('photo').each(function(){
-                        
-                    });
                 }
                 
                 init();
@@ -454,118 +485,100 @@ function setXmlContent(idcategorie, level)
     });
 }
 
-/*// on renseigne les champs
-                    var nom = $(this).find('nom').text();
-                    var description = $(this).find('description').text();
-                    var info = $(this).find('info').text();
-                    nombre_photos = $(this).find('photos').find('photo').length;
-                    if(nombre_photos === 1){
-                        $('#next').css({
-                            'visibility' : 'hidden'
-                        });
-                    }
-                    
-                    var link = $(this).find('photos').find('photo[id="'+ num_photo +'"]').text();
-                    
-                    $('#nom_produit').html(nom);
-                    $('#desc_produit').html(description);
-                    $('#info_produit').html(info);
-                    $('#image_detail').css({
-                        'background-image' : 'url("'+link+'")'
-                    });*/
-
-
-
-function parseXml(xml){
-    "use strict";
-    $(xml).find('produit').each(function(){
-        var id = parseInt($(this).find('id').text(),10);
-        if(id === num_detail){
-						
-            var nom = $(this).find('nom').text();
-            var description = $(this).find('description').text();
-            var info = $(this).find('info').text();
-            nombre_photos = $(this).find('photos').find('photo').length;
-            if(nombre_photos === 1){
-                $('#next').css({
-                    'visibility' : 'hidden'
-                });
-            }
-            var link = $(this).find('photos').find('photo[id="'+ num_photo +'"]').text();
-						
-						
-            $('#nom_produit').html(nom);
-            $('#desc_produit').html(description);
-            $('#info_produit').html(info);
-            $('#image_detail').css({
-                'background-image' : 'url("'+link+'")'
-                });
-
-        }
-    });
-                                
-    $('#detailNext').fadeIn();
-                             
-}
-
 $('#close').click(function(){
     "use strict";
     $('#detailNext').fadeOut();
-    $('#next').css({
-        'visibility' : 'visible'
-    });
+    //$('#next').css({ 'visibility' : 'visible'});
 });
 
 $('#next').click(function(){
-    "use strict";
-    if(num_photo < nombre_photos){
-        num_photo = num_photo + 1;
-        $('#prev').css({
-            'visibility' : 'visible'
-        });
-        $('#image_detail').fadeOut(function(){
-            $.ajax({
-                url: "includes/base.xml",
-                type: "GET",
-                dataType: "xml",
-                success: function(xml){
-                    parseXml(xml);
-                    $('#image_detail').fadeIn();
+    $('#prev').css({
+        'visibility' : 'visible'
+    });
+    // on parse le fichier XML,
+    // on vérifie s'il y a une photo suivante
+    id = $('#current_prod_id').val();
+    $.ajax({
+        url: "includes/base.xml",
+        type: "GET",
+        dataType: "xml",
+        success: function(xml){
+            $(xml).find('produit').each(function(){
+                if ($(this).find('id').first().text() == id) {
+                    //on est dans le bon produit
+                    var idImage = $('#current_img_id').val();
+                    $(this).find('photo').each(function(){
+                        if ($(this).attr('id') == idImage) {
+                            if ($(this).next().is('photo')) {
+                                link = $(this).next().text();
+                                $('#image_detail').fadeOut(200, function(){
+                                    $('#image_detail').css({
+                                        'background-image' : 'url("'+link+'")'
+                                    });
+                                });
+                                $('#image_detail').fadeIn(200);
+                                $('#current_img_id').val($(this).next().attr('id'));
+                                // suppression du bouton next s'il n'y a pas d'autre image derrière
+                                if (!$(this).next().next().is('photo')) {
+                                   
+                                   $('#next').css({
+                                        'visibility' : 'hidden'
+                                    });
+                                }
+                                return;
+                            }
+                        }
+                    });
                 }
             });
-        });
-    }
-    if(num_photo === nombre_photos){
-        $('#next').css({
-            'visibility' : 'hidden'
-        });
-    }
+        }
+    
+    });
 });
 
 $('#prev').click(function(){
-    "use strict";
-    if(num_photo > 1){
-        num_photo = num_photo - 1;
-        $('#next').css({
-            'visibility' : 'visible'
-        });
-        $('#image_detail').fadeOut(function(){
-            $.ajax({
-                url: "includes/base.xml",
-                type: "GET",
-                dataType: "xml",
-                success: function(xml){
-                    parseXml(xml);
-                    $('#image_detail').fadeIn();
+    $('#next').css({
+        'visibility' : 'visible'
+    });
+    // on parse le fichier XML,
+    // on vérifie s'il y a une photo suivante
+    id = $('#current_prod_id').val();
+    $.ajax({
+        url: "includes/base.xml",
+        type: "GET",
+        dataType: "xml",
+        success: function(xml){
+            $(xml).find('produit').each(function(){
+                if ($(this).find('id').first().text() == id) {
+                    //on est dans le bon produit
+                    var idImage = $('#current_img_id').val();
+                    $(this).find('photo').each(function(){
+                        if ($(this).attr('id') == idImage) {
+                            if ($(this).prev().is('photo')) {
+                                link = $(this).prev().text();
+                                $('#image_detail').fadeOut(200, function(){
+                                    $('#image_detail').css({
+                                        'background-image' : 'url("'+link+'")'
+                                    });
+                                });
+                                $('#image_detail').fadeIn(200);
+                                $('#current_img_id').val($(this).prev().attr('id'));
+                                // suppression du bouton next s'il n'y a pas d'autre image derrière
+                                if (!$(this).prev().prev().prev().is('photo')) {
+                                   
+                                   $('#prev').css({
+                                        'visibility' : 'hidden'
+                                    });
+                                }
+                                return;
+                            }
+                        }
+                    });
                 }
             });
-        });
-    }
-    if(num_photo === 1){
-        $('#prev').css({
-            'visibility' : 'hidden'
-        });
-    }
+        }
+    
+    });
 });
 
 
