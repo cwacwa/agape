@@ -60,10 +60,15 @@ class UserTable extends AbstractTableGateway
     
     public function exists($login, $pwd)
     {
-        $where = "login = '$login' AND pwd = '$pwd'";
-        //echo $where; exit;
+        $where = array(
+            'login' =>$login,
+            'pwd' =>$pwd,
+        );
+        
         $rowset = $this->select($where);
+        
         $row = $rowset->current();
+        
         if (!$row) {
             return false;
         }

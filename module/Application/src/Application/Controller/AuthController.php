@@ -3,9 +3,8 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController,
     Application\Form\LoginForm,
-    Application\Model\User,    
-    Application\Service\UserService,
-    Application\Service\AuthService;
+    Application\Model\User;
+    
     
 
 class AuthController extends AbstractActionController
@@ -31,6 +30,7 @@ class AuthController extends AbstractActionController
     }
     public function homeAction()
     {
+        $this->layout('layout/admin');
         $form = new LoginForm();
         
         $request = $this->getRequest();
@@ -45,9 +45,8 @@ class AuthController extends AbstractActionController
                // on vérifie que l'utilisateur existe en base
                if ($this->getUserTable()->exists($user->getLogin(), $user->getPwd())) {
                    // authentification Zend
-                   $authService = new AuthService();
-                   $authService->authenticate($user);
-                   var_dump($authService->hasIdentity()); exit;
+                   
+                   
                    // on redirige vers l'admin
                    return $this->redirect()->toRoute('admin');
                } else {
