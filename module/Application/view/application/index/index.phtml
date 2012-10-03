@@ -7,7 +7,8 @@
         <?php 
         $i = 0;
         foreach ($this->categories as $categorie) : ?>
-            <li class="lienmenu" id="link-<?php echo $categorie['id'] ?>" name="<?php echo $i ?>"><?php echo $categorie['name'] ?></li>
+            <li class="lienmenu <?php echo (count($categorie['children'])) ? 'hasChildren' : ''?>" 
+                id="<?php echo $categorie['id'] ?>" name="<?php echo $i ?>"><?php echo $categorie['name'] ?></li>
                 
             <?php if (count($categorie['children'])) : ?>
                 <ul id="submenu-<?php echo $categorie['id'] ?>" class="menusub">
@@ -42,8 +43,13 @@ $script = '';
 foreach ($this->categories as $categorie) : 
     if (count($categorie['children'])) : 
 $script.=<<<SCRIPT
-        $("#link-$categorie[id]").click(function(){
-           $("#submenu-$categorie[id]").slideToggle();
+        $("#$categorie[id]").click(function(){
+           if ($(this).hasClass('hasChildren') && !$(this).hasClass('selected')) {
+                $(this).addClass('selected')
+                $("#submenu-$categorie[id]").slideToggle();
+           }
+           
+           
         });
 SCRIPT;
     endif; 

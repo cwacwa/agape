@@ -161,6 +161,9 @@ textarea{
 .selected{
 	color:#fff;
 }
+.lienmenusub.selected {
+    font-weight:bold;
+}
 .content {
   height: 100%;
   letter-spacing: 1px;
