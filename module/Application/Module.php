@@ -25,7 +25,6 @@ class Module
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
         
-        
     }
 
     public function getConfig()

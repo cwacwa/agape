@@ -21,16 +21,9 @@ class AdminController extends AbstractActionController
     protected $categorieTable;
     protected $photoTable;
     
-    public function _construct()
-    {
-                
-    }
-    
     public function indexAction()
     {
-        //$this->checkIdentity();
-       
-        $this->layout('layout/admin');
+      $this->layout('layout/admin');
         return new ViewModel();
     }
 

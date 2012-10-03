@@ -24,7 +24,9 @@ class ProduitsController extends AbstractActionController {
     protected $produitTable;
     protected $categorieTable;
 
+    
     public function indexAction() {
+                
         $this->layout('layout/admin');
         return new ViewModel(array(
                     'produits' => $this->getProduitTable()->fetchAll(),
@@ -32,6 +34,7 @@ class ProduitsController extends AbstractActionController {
     }
 
     public function addAction() {
+       
         $this->layout('layout/admin');
         $form = new ProduitForm();
 
@@ -56,6 +59,7 @@ class ProduitsController extends AbstractActionController {
     }
 
     public function editAction() {
+       
         $this->layout('layout/admin');
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
@@ -98,6 +102,7 @@ class ProduitsController extends AbstractActionController {
     }
 
     public function deleteAction() {
+       
         $this->layout('layout/admin');
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
@@ -125,6 +130,7 @@ class ProduitsController extends AbstractActionController {
     }
 
     public function uploadimageAction() {
+        
         $this->layout('layout/admin');
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
@@ -161,6 +167,7 @@ class ProduitsController extends AbstractActionController {
 
     public function deleteimageAction()
     {
+        
         $request = $this->getRequest();
         $post = $request->getPost();
         $id = $post['id'];

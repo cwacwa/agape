@@ -23,6 +23,7 @@ class CategoriesController extends AbstractActionController
     
     public function indexAction()
     {
+              
        $this->layout('layout/admin');
        return new ViewModel(array(
             'categories' => $this->getCategorieTable()->fetchAll(),
@@ -31,6 +32,7 @@ class CategoriesController extends AbstractActionController
     
     public function addAction()
     {
+        
         $this->layout('layout/admin');
         $form = new CategorieForm();
         
@@ -59,6 +61,7 @@ class CategoriesController extends AbstractActionController
     
     public function editAction()
     {
+       
         $this->layout('layout/admin');
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
@@ -99,6 +102,7 @@ class CategoriesController extends AbstractActionController
     
     public function deleteAction()
     {
+        
          $this->layout('layout/admin');
         $id = (int) $this->params()->fromRoute('id', 0);
         if (!$id) {
